@@ -126,6 +126,11 @@ body {
   .portfolio-img { width: 45%; height: 100%; min-height: 350px; }
   .portfolio-info { width: 55%; padding-right: 3rem; }
 }
+.portfolio-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
 
 /* ================= ANIMACIONES ================= */
 .hover-up:hover { transform: translateY(-10px); border-color: rgba(0, 229, 255, 0.3); }
