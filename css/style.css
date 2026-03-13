@@ -1,10 +1,10 @@
 :root {
-  --bg-color: #050505;
-  --surface-color: rgba(255, 255, 255, 0.03);
-  --border-color: rgba(255, 255, 255, 0.08);
+  --bg-color: #0a0a0a; /* Negro ligeramente más suave para reducir el deslumbramiento */
+  --surface-color: rgba(255, 255, 255, 0.06); /* Tarjetas con más presencia visual */
+  --border-color: rgba(255, 255, 255, 0.15); /* Bordes más definidos para no perder los contenedores */
   --text-main: #ffffff;
-  --text-muted: #a0a0a0;
-  --accent-color: #00E5FF; /* Cian eléctrico */
+  --text-muted: #b3b3b3; /* Gris más claro para que se lea perfecto con mucha luz */
+  --accent-color: #00E5FF; /* Tu cian eléctrico se mantiene intacto */
 }
 
 html {
