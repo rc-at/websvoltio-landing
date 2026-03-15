@@ -1,35 +1,43 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("WebsVoltio Premium: Iniciado.");
 
-  // Animaciones de Scroll (Fade-in)
+  // ================= ANIMACIONES DE SCROLL (FADE-IN) =================
+  // Utiliza IntersectionObserver para detectar cuándo un elemento entra en pantalla.
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.1 }); // Se activa cuando el 10% del elemento es visible
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  // Acordeón FAQ Suave
+
+  // ================= ACORDEÓN DE PREGUNTAS FRECUENTES (FAQ) =================
   const faqSummaries = document.querySelectorAll('.faq-summary');
+  
   faqSummaries.forEach(summary => {
     summary.addEventListener('click', () => {
       const item = summary.parentElement;
-      // Cerrar otros abiertos (Opcional)
+      
+      // Opcional: Cierra las demás preguntas cuando abres una nueva
       document.querySelectorAll('.faq-item').forEach(otherItem => {
         if (otherItem !== item) {
           otherItem.classList.remove('active');
         }
       });
-      // Abrir/Cerrar el actual
+      
+      // Alterna la clase activa en la pregunta clickeada
       item.classList.toggle('active');
     });
   });
 
-  // Botón Volver Arriba
+
+  // ================= BOTÓN "VOLVER ARRIBA" ESTABILIZADO =================
   const btnTop = document.getElementById('btn-top');
+  
+  // Muestra u oculta el botón basado en la posición del scroll
   window.addEventListener('scroll', () => {
     if (window.scrollY > 300) {
       btnTop.classList.add('show');
@@ -38,46 +46,57 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  btnTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  // Evento de clic para hacer el scroll suave hacia arriba
+  if (btnTop) {
+    btnTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 
-  // Lógica de flechas para el Carrusel de Portafolio
+
+// ================= LÓGICA DEL CARRUSEL DE PORTAFOLIO Y DIFUMINADOS =================
   const track = document.getElementById('portfolio-track');
   const btnPrev = document.getElementById('btn-prev');
   const btnNext = document.getElementById('btn-next');
 
-  if (track && btnPrev && btnNext) {
-    const updateButtons = () => {
-      // Ocultar "Anterior" si estamos al inicio
-      if (track.scrollLeft <= 0) {
-        btnPrev.style.opacity = '0';
-        btnPrev.style.pointerEvents = 'none';
+  if (track) {
+    const wrapper = track.closest('.carousel-wrapper');
+    
+    const updateCarouselUI = () => {
+      // Manejo del borde izquierdo (Difuminado y Flecha)
+      if (track.scrollLeft <= 5) { // Un pequeño margen de 5px
+        wrapper.classList.remove('show-left');
+        if (btnPrev) { btnPrev.style.opacity = '0'; btnPrev.style.pointerEvents = 'none'; }
       } else {
-        btnPrev.style.opacity = '1';
-        btnPrev.style.pointerEvents = 'auto';
+        wrapper.classList.add('show-left');
+        if (btnPrev) { btnPrev.style.opacity = '1'; btnPrev.style.pointerEvents = 'auto'; }
       }
       
-      // Ocultar "Siguiente" si estamos al final (margen de 2px por redondeo)
+      // Manejo del borde derecho (Difuminado y Flecha)
       if (Math.ceil(track.scrollLeft + track.clientWidth) >= track.scrollWidth - 2) {
-        btnNext.style.opacity = '0';
-        btnNext.style.pointerEvents = 'none';
+        wrapper.classList.remove('show-right');
+        if (btnNext) { btnNext.style.opacity = '0'; btnNext.style.pointerEvents = 'none'; }
       } else {
-        btnNext.style.opacity = '1';
-        btnNext.style.pointerEvents = 'auto';
+        wrapper.classList.add('show-right');
+        if (btnNext) { btnNext.style.opacity = '1'; btnNext.style.pointerEvents = 'auto'; }
       }
     };
 
-    // Revisar estado de botones al cargar y al hacer scroll
-    updateButtons();
-    track.addEventListener('scroll', updateButtons);
+    // Ejecutar al cargar la página y cada vez que se hace scroll en el carrusel
+    updateCarouselUI();
+    track.addEventListener('scroll', updateCarouselUI);
 
-    btnNext.addEventListener('click', () => {
-      track.scrollBy({ left: 380, behavior: 'smooth' });
-    });
+    // Controles de flechas (PC)
+    if (btnNext) {
+      btnNext.addEventListener('click', () => {
+        track.scrollBy({ left: 380, behavior: 'smooth' });
+      });
+    }
     
-    btnPrev.addEventListener('click', () => {
-      track.scrollBy({ left: -380, behavior: 'smooth' });
-    });
+    if (btnPrev) {
+      btnPrev.addEventListener('click', () => {
+        track.scrollBy({ left: -380, behavior: 'smooth' });
+      });
+    }
   }
 });
