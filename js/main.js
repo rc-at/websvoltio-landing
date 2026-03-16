@@ -77,14 +77,56 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (btnNext) {
       btnNext.addEventListener('click', () => {
-        track.scrollBy({ left: 380, behavior: 'smooth' });
+        track.scrollBy({ left: 350, behavior: 'smooth' });
       });
     }
-    
+
     if (btnPrev) {
       btnPrev.addEventListener('click', () => {
-        track.scrollBy({ left: -380, behavior: 'smooth' });
+        track.scrollBy({ left: -350, behavior: 'smooth' });
       });
     }
   }
+
+  /* ================= LÓGICA DE PAQUETES (INDEPENDIENTES) ================= */
+  
+  // 1. Botón "Mantener expandido" (PC)
+  const pinButtons = document.querySelectorAll('.btn-pin');
+  
+  pinButtons.forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation(); 
+      const card = this.closest('.package-card'); // <--- Esto aísla el comportamiento
+      
+      card.classList.toggle('is-pinned');
+      
+      if (card.classList.contains('is-pinned')) {
+        this.innerHTML = '<span class="material-symbols-outlined icon-pin">keep</span> Vista fijada';
+      } else {
+        this.innerHTML = '<span class="material-symbols-outlined icon-pin">push_pin</span> Mantener expandido';
+      }
+    });
+  });
+
+  // 2. Botón "Ver detalles" (Móvil)
+  const mobileToggleButtons = document.querySelectorAll('.mobile-toggle-btn');
+  
+  mobileToggleButtons.forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const card = this.closest('.package-card');
+      const icon = this.querySelector('.material-symbols-outlined');
+      
+      card.classList.toggle('is-pinned'); 
+      
+      if (card.classList.contains('is-pinned')) {
+        icon.style.transform = 'rotate(180deg)';
+        this.innerHTML = 'Ocultar detalles <span class="material-symbols-outlined" style="transform: rotate(180deg); transition: transform 0.4s">expand_more</span>';
+      } else {
+        icon.style.transform = 'rotate(0deg)';
+        this.innerHTML = 'Ver detalles <span class="material-symbols-outlined" style="transition: transform 0.4s">expand_more</span>';
+      }
+    });
+  });
+
 });
