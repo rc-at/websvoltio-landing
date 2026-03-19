@@ -1,7 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("WebsVoltio Premium: Iniciado.");
 
-  /* ================= ANIMACIONES DE SCROLL ================= */
+  /* ==========================================================================
+     1. ANIMACIONES DE SCROLL (Fade-in)
+     ========================================================================== */
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -12,13 +14,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  /* ================= ACORDEÓN DE PREGUNTAS FRECUENTES ================= */
+  /* ==========================================================================
+     2. ACORDEÓN DE PREGUNTAS FRECUENTES (FAQ)
+     ========================================================================== */
   const faqSummaries = document.querySelectorAll('.faq-summary');
   
   faqSummaries.forEach(summary => {
     summary.addEventListener('click', () => {
       const item = summary.parentElement;
       
+      // Cierra las demás opciones abiertas automáticamente
       document.querySelectorAll('.faq-item').forEach(otherItem => {
         if (otherItem !== item) {
           otherItem.classList.remove('active');
@@ -29,7 +34,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  /* ================= BOTÓN FLOTANTE "VOLVER ARRIBA" ================= */
+  /* ==========================================================================
+     3. BOTÓN FLOTANTE "VOLVER ARRIBA"
+     ========================================================================== */
   const btnTop = document.getElementById('btn-top');
   
   window.addEventListener('scroll', () => {
@@ -46,9 +53,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* ================= LÓGICA DE PAQUETES ================= */
+  /* ==========================================================================
+     4. LÓGICA DE PAQUETES (Fijar / Expandir)
+     ========================================================================== */
   
-  // 1. Botón "Mantener expandido" (PC)
+  // 4.1. Botón "Mantener expandido" (Versión PC)
   const pinButtons = document.querySelectorAll('.btn-pin');
   
   pinButtons.forEach(btn => {
@@ -65,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 2. Botón "Ver detalles" (Móvil)
+  // 4.2. Botón "Ver detalles" (Versión Móvil)
   const mobileToggleButtons = document.querySelectorAll('.mobile-toggle-btn');
   
   mobileToggleButtons.forEach(btn => {
@@ -85,4 +94,5 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
 });
