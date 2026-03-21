@@ -12,8 +12,8 @@ a:focus{outline: none}
 
 /* TIPOGRAFÍA */
 h1,h2,h3{line-height:1.2; margin-bottom:1rem; color:#fff}
-h1{font-size:clamp(3rem,10vw,5rem); font-weight:800; letter-spacing:-2px}
-h2{font-size:clamp(2rem,5vw,2.5rem); font-weight:700; margin-bottom:1.5rem}
+h1{font-size:clamp(2.8rem,8vw,5rem); font-weight:800; letter-spacing:-2px}
+h2{font-size:clamp(1.8rem,5vw,2.5rem); font-weight:700; margin-bottom:1.5rem}
 h3{font-size:1.4rem; font-weight:600; color:var(--celeste)}
 p{margin-bottom:1rem; color:var(--text-dim)}
 strong{color:#fff; font-weight:600}
@@ -33,13 +33,6 @@ strong{color:#fff; font-weight:600}
 .item-6:hover{color: #fff}
 @keyframes fadeUpCenter{to { opacity: 1; transform: translateX(-50%) translateY(0)}}
 .item-6{animation-name: fadeUpCenter}
-@media (max-width: 600px) {
-  .index-box { padding: 15px 10px}
-  #index-hero .item-1 { font-size: 14vw; line-height: 1.1; margin-bottom: 15px; letter-spacing: -1px}
-  #index-hero .item-2 { font-size: 8vw; margin-bottom: 30px}
-  #index-hero .item-3 { font-size: 6vw}
-  #index-hero .item-4 { font-size: 6.5vw; margin-bottom: 35px}
-}
 
 /* COMPONENTES */
 .btn-whatsapp{display:inline-flex; align-items:center; justify-content:center; gap:12px; background-color:var(--celeste); color:#020617; padding:16px 32px; border-radius:100px; font-size:1.1rem; font-weight:700; transition:var(--transition); box-shadow:0 4px 15px rgba(0,242,255,0.3); margin-top:20px; overflow: hidden; border: 1px solid transparent}
@@ -121,8 +114,7 @@ strong{color:#fff; font-weight:600}
 .testimonial-author{font-size: 0.75rem; color: var(--text-dim); margin: 0}
 .portfolio-link-overlay{position: absolute; bottom: 15px; right: 25px; background: transparent; backdrop-filter: none; border-top: none; padding: 0; display: flex; justify-content: flex-end; opacity: 0; transform: translateY(10px); transition: opacity 0.3s ease, transform 0.3s ease; pointer-events: none}
 .portfolio-card:hover .portfolio-link-overlay{opacity: 1; transform: translateY(0); pointer-events: auto}
-.portfolio-link:hover{background:var(--celeste); color:#020617; box-shadow:0 0 10px rgba(0,242,255,0.4)}
-.portfolio-link .material-icons{font-size: 1.1rem}
+.portfolio-link{display:inline-flex; align-items:center; gap:6px; padding:8px 16px; border-radius:100px; color:var(--celeste); font-weight:600; font-size:0.9rem; transition:var(--transition)}
 .disabled-link{color: var(--text-dim); pointer-events: none}
 .span-2{grid-column: span 2}
 .span-3{grid-column: span 3}
@@ -135,11 +127,11 @@ strong{color:#fff; font-weight:600}
 #hero{display:flex;align-items:center;justify-content:flex-start;text-align:left;background:radial-gradient(circle at center,#070e2b 0%,var(--bg) 100%);position:relative}
 #hero::before{content:''; position:absolute; inset:0; background-image: radial-gradient(var(--border) 1px, transparent 1px); background-size:40px 40px; opacity:.3; animation:none; will-change: transform}
 #benefits{display:flex;align-items:center}
-#about{display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 60px 0}
+#about{display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center}
 #about h2{margin-bottom: 20px; font-size: clamp(2rem, 5vw, 3rem); width: 100%}
-#servicios{display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 60px 0; width: 100%}
-#portfolio{display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 60px 0; width: 100%}
-#why-us{display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 60px 0; width: 100%}
+#servicios{display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center}
+#portfolio{display: flex; flex-direction: column; justify-content: center; align-items: flex-start}
+#why-us{display: flex; flex-direction: column; justify-content: center; align-items: center}
 #contact{display:flex; flex-direction:column; justify-content:center; position:relative; padding-bottom: 120px}
 #hero, #benefits, #about, #servicios, #portfolio, #why-us{min-height: 100dvh}
 #contact .grid-layout{display:flex; justify-content:space-between; align-items:flex-start; gap:60px; margin-bottom: 40px}
@@ -150,7 +142,6 @@ strong{color:#fff; font-weight:600}
 /* PORTAFOLIO */
 .portfolio-grid{display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; width: 100%}
 .portfolio-card{background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 25px; display: flex; flex-direction: column; text-align: left; position: relative; overflow: hidden; transition: var(--transition); will-change: transform; box-shadow:0 2px 10px rgba(0,0,0,.25)}
-.portfolio-link{display:inline-flex; align-items:center; gap:6px; padding:8px 16px; border-radius:100px; color:var(--celeste); font-weight:600; font-size:0.9rem; transition:var(--transition)}
 
 /* PORQUE NOSOTROS */
 .why-footer{text-align: center; font-size: 1.4rem; width: 100%}
@@ -174,10 +165,12 @@ strong{color:#fff; font-weight:600}
 @keyframes moveParticles{from{transform:translate(0,0)}to{transform:translate(40px,40px)}}
 @keyframes flicker{0%,18%,22%,25%,53%,57%,100%{opacity:1}20%,24%,55%{opacity:.6}}
 @keyframes fadeInUp{0%{opacity: 0; transform: translateY(40px)}100%{opacity: 1; transform: translateY(0)}}
-section, .service-card, .portfolio-card, .bento-card{animation: fadeInUp linear both; animation-timeline: view(); animation-range: entry 30% cover 30%}
-#hero{animation: none}
 
-/* --- ANIMACIONES DE ENTRADA PARA EL HERO (Al Cargar) --- */
+/* Ajuste de scroll para que aparezcan rápido */
+section, .service-card, .portfolio-card, .bento-card{animation: fadeInUp linear both; animation-timeline: view(); animation-range: entry 10% cover 25%}
+#hero, #index-hero{animation: none}
+
+/* --- ANIMACIONES HERO --- */
 @keyframes flickerOn{0% { opacity: 0; filter: blur(5px) brightness(0)}10% { opacity: 1; filter: blur(2px) brightness(1)}15% { opacity: 0.4; filter: blur(3px) brightness(0.5)}20% { opacity: 1; filter: blur(0px) brightness(1)}80% { opacity: 0.9}100% { opacity: 1; filter: blur(0px) brightness(1)}}
 @keyframes wakeUpContent{0%{opacity: 0; transform: translateY(20px) scale(0.95); filter: blur(10px)}100%{opacity: 1; transform: translateY(0) scale(1); filter: blur(0)}}
 @keyframes backgroundPulse{0%, 100%{transform: scale(1); opacity: 0.3}50% { transform: scale(1.05); opacity: 0.4}}
@@ -188,47 +181,89 @@ section, .service-card, .portfolio-card, .bento-card{animation: fadeInUp linear 
 #hero .hero-buttons{animation: wakeUpContent 1s ease-out both; animation-delay: 1.4s}
 #hero::before{animation: backgroundPulse 8s ease-in-out infinite; transform-origin: center}
 
-/* RESPONSIVE */
+/* --------------------------
+   RESPONSIVE Y ADAPTABILIDAD 
+--------------------------- */
+
+/* Dispositivos sin hover (Touch) */
 @media (hover: none){
   .testimonial-box{padding-bottom: 12px}
   .portfolio-link-overlay{position: relative; bottom: auto; right: auto; opacity: 1; transform: translateY(0); padding: 15px 0 0 0; background: transparent; justify-content: flex-start; pointer-events: auto}
   #hero::before{animation:none}
   .bolt-icon{animation:none}
 }
+
+/* Tablets Landscape */
+@media (max-width: 900px){
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .grid-layout{grid-template-columns:1fr}
+  #hero::before{animation:moveParticles 40s linear infinite}
+}
+
+/* Tablets Portrait */
 @media (max-width: 850px){
   .bento-grid{grid-template-columns: repeat(2, 1fr)}
   .span-3{grid-column: span 2}
   .portfolio-grid{grid-template-columns: 1fr}
 }
-@media (max-width:900px){
-  .services-grid{grid-template-columns:repeat(2,1fr)}
-  .grid-layout{grid-template-columns:1fr}
-  #hero::before{animation:moveParticles 40s linear infinite}
-}
-@media (max-width:800px){
+
+/* Teléfonos grandes / Tablets pequeñas */
+@media (max-width: 800px){
   #hero::before{animation:none}
-  #contact .grid-layout{flex-direction: column; gap: 30px}
+  #contact .grid-layout{flex-direction: column; gap: 30px; margin-bottom: 20px}
   .footer-social-side{align-items: flex-start; text-align: left}
   .footer-social-links{justify-content: flex-start}
 }
-@media (max-width:700px){
+
+@media (max-width: 700px){
   .services-grid{grid-template-columns:1fr}
   .bento-grid{grid-template-columns:1fr}
+  .span-3{grid-column: span 1}
 }
-@media (max-width:600px){
-  section,header,footer{padding:3rem 1.2rem; min-height:auto}
-  h1{font-size:2.8rem}
-  .bolt-icon{font-size:4.5rem !important}
-  .portfolio-link{width:100%; text-align:center; padding:10px 22px}
-  .why-footer h3{font-size:1.1rem; justify-content:center}
-  section,
-  header,
-  h1{font-size:2.2rem; letter-spacing:-1px}
-  h2{font-size:1.6rem}
-  .hero-hook{font-size:2rem}
-  .btn-whatsapp, .btn-secondary, .portfolio-link{padding:12px 18px; font-size:.9rem}
-  .hero-buttons{flex-direction:column; align-items:flex-start; gap:12px}
-  #hero{padding-top:80px; padding-bottom:80px}
-  .span-2, .span-3{grid-column: span 1}
+
+/* TELÉFONOS MÓVILES (Estándar) */
+@media (max-width: 600px){
+  /* Reducción de espaciados generales */
+  section, header, footer{padding: 3rem 1.2rem; min-height:auto}
+  .index-box { padding: 15px 10px }
+  
+  /* Ajustes tipográficos */
+  h1, .hero-hook{font-size: 2.2rem; letter-spacing: -1px; line-height: 1.2}
+  h2{font-size: 1.6rem}
+  .bolt-icon{font-size: 3.5rem !important}
+  
+  /* Ajuste de tarjetas para que no aprieten el contenido */
+  .service-card, .portfolio-card, .bento-card, .about-card { padding: 20px; border-radius: 16px }
+  
+  /* Botones 100% de ancho para mejor click en celular */
+  .btn-whatsapp, .btn-secondary, .portfolio-link{padding: 14px 20px; font-size: 1rem; width: 100%; text-align: center}
+  .hero-buttons{flex-direction: column; align-items: stretch; gap: 12px}
+  
+  /* Layouts menores */
+  #hero{padding-top: 80px; padding-bottom: 80px}
+  .span-2{grid-column: span 1}
   .center-card{align-items: flex-start; text-align: left}
+  .why-footer h3{font-size: 1.1rem; justify-content: center}
+  
+  /* Index secuencial móvil */
+  #index-hero .item-1 { font-size: 14vw; line-height: 1.1; margin-bottom: 15px; letter-spacing: -1px}
+  #index-hero .item-2 { font-size: 8vw; margin-bottom: 30px}
+  #index-hero .item-3 { font-size: 6vw}
+  #index-hero .item-4 { font-size: 6.5vw; margin-bottom: 35px}
+}
+
+/* PANTALLAS ULTRA COMPACTAS (Ej. iPhone SE - 320/375px) */
+@media (max-width: 380px){
+  /* Bajamos el font-size base y empaquetamos el contenido */
+  h1, .hero-hook{font-size: 1.8rem}
+  h2{font-size: 1.4rem}
+  .hero-description p{font-size: 1rem}
+  .promo-price strong{font-size: 1.6rem}
+  
+  section, header, footer{padding: 2.5rem 1rem}
+  
+  .btn-whatsapp, .btn-secondary, .portfolio-link{font-size: 0.95rem; padding: 12px 15px}
+  .about-footer, .why-footer{font-size: 1.1rem}
+  .portfolio-header-flex{flex-direction: column; gap: 8px}
+  .bento-card .info-icon{font-size: 1.6rem !important}
 }
